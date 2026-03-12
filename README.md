@@ -16,14 +16,18 @@ real-time diagnostics as it edits. This means Claude can work with your Python
 code the way an IDE does, following the actual structure of the code rather than
 guessing from string matches.
 
-The pyright-lsp plugin does the same thing. `ty` is written in Rust with
-incremental recomputation at its core, so in practice it tends to be faster at
-updating diagnostics after edits, which is nice when Claude is churning through
-changes. See the
+The `pyright-lsp` plugin does all of this too! So why `ty`? There a few reasons,
+one is that `ty` is written in Rust with incremental recomputation at its core,
+so in practice it uses less CPU and memory than Pyright, and tends to be faster
+at updating diagnostics after edits. See the
 [`ty` benchmarks](https://github.com/astral-sh/ty/blob/main/BENCHMARKS.md) for
-detailed comparisons — the LSP incremental edit latency is particularly
-relevant here. The tradeoff is that `ty` is still early stage, but it's what I
-use day-to-day so it's what I wanted to hook up.
+detailed comparisons.
+
+In practice, Claude Code's response time is dominated by LLM reasoning calls, so
+the raw speed difference between type checkers matters less than in other
+contexts. What matters more is that the LSP your agent is using is consistent
+with the type checker you run in CI. If you use `ty` in CI, this plugin means
+Claude sees the same view of your code as your pipeline does.
 
 ## Prerequisites
 
@@ -41,7 +45,9 @@ or even a global `pip install ty` (though that's not a great idea).
 
 ## Installation
 
-Install from the [tcbegley-cc-plugins](https://github.com/tcbegley/tcbegley-cc-plugins) marketplace:
+Install from the
+[tcbegley-cc-plugins](https://github.com/tcbegley/tcbegley-cc-plugins)
+marketplace:
 
 ```sh
 /plugin marketplace add tcbegley/tcbegley-cc-plugins
