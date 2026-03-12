@@ -1,12 +1,18 @@
 {
   "name": "ty-lsp",
+  "description": "Python type checking via Astral's ty language server",
   "version": "0.1.0",
-  "description": "Python language server (ty) for type checking and code intelligence",
   "author": {
-    "name": "Tom Begley",
-    "email": "tomcbegley@gmail.com"
+    "name": "tcbegley"
   },
-  "repository": "https://github.com/tcbegley/ty-cc-plugin",
-  "license": "MIT",
-  "keywords": ["python", "type-checking", "lsp", "ty", "astral"]
+  "lspServers": {
+    "ty": {
+      "command": "ty",
+      "args": ["server"],
+      "extensionToLanguage": {
+        ".py": "python",
+        ".pyi": "python"
+      }
+    }
+  }
 }

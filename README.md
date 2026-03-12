@@ -2,7 +2,9 @@
 
 A [Claude Code](https://claude.com/claude-code) plugin that integrates
 [ty](https://docs.astral.sh/ty/) (Astral's Python type checker) as an LSP
-server.
+server. Based on the official
+[pyright-lsp](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp)
+plugin, but using Astral's ty instead of pyright.
 
 ## Prerequisites
 
@@ -20,16 +22,17 @@ or even a global `pip install ty` (though that's not a great idea).
 
 ## Installation
 
-### From local directory (development)
+Install from the [tcbegley-cc-plugins](https://github.com/tcbegley/tcbegley-cc-plugins) marketplace:
+
+```sh
+/plugin marketplace add tcbegley/tcbegley-cc-plugins
+/plugin install ty-lsp@tcbegley-cc-plugins
+```
+
+### Development
 
 ```sh
 claude --plugin-dir /path/to/ty-cc-plugin
-```
-
-### From a marketplace (once published)
-
-```sh
-claude plugin install ty-lsp
 ```
 
 ## What it provides
