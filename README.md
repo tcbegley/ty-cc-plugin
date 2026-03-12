@@ -19,8 +19,11 @@ guessing from string matches.
 The pyright-lsp plugin does the same thing. `ty` is written in Rust with
 incremental recomputation at its core, so in practice it tends to be faster at
 updating diagnostics after edits, which is nice when Claude is churning through
-changes. The tradeoff is that `ty` is still early stage, but it's what I use
-day-to-day so it's what I wanted to hook up.
+changes. See the
+[`ty` benchmarks](https://github.com/astral-sh/ty/blob/main/BENCHMARKS.md) for
+detailed comparisons — the LSP incremental edit latency is particularly
+relevant here. The tradeoff is that `ty` is still early stage, but it's what I
+use day-to-day so it's what I wanted to hook up.
 
 ## Prerequisites
 
